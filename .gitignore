@@ -1,0 +1,8 @@
+# IDE:s
+.idea
+
+# NodeJS
+node_modules/
+
+# Application Specific
+build/
