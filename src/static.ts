@@ -33,10 +33,12 @@ app.use((req, res) => {
     res.write('<ul>')
     for (const file of files ) {
       res.write(`<li><a href='static/${file}'>${file}</a></li>`)
-      if (fs.lstatSync(path.join(applicationPath, file)).isDirectory() )
-      res.write(md.render(fs.readFileSync(path.join(applicationPath, file, 'README.md')).toString()))
+      const filepath = path.join(applicationPath, file);
+      const readmeFilepath = path.join(filepath, 'README.md');
+      if (fs.lstatSync(filepath).isDirectory() && fs.existsSync(readmeFilepath) ) {
+        res.write(md.render(fs.readFileSync(path.join(applicationPath, file, 'README.md')).toString()))
+      }     
     }
-
     res.write('</ul>')
     res.write(`
     </body>
