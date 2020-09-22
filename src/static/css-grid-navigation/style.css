@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,700');
+
+html { 
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-areas:
+      'header header header header'
+      'nav nav nav nav'
+      'main main main main'
+      'footer footer footer footer';
+    grid-template-rows: auto 50px 8fr auto;
+    height: 100vh;    
+  }
+  
+  body > * {
+    border: 1px solid black;
+  }
+  
+  header {
+    grid-area: header
+  }
+  
+  footer {
+    grid-area: footer
+  }
+  
+  nav {
+    display: box;
+    grid-area: nav;
+  }
+  
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+
+  li {
+    list-style-type: none;
+  }
+  
+  main {
+    grid-area: main
+  }
+  
+  aside {
+    grid-area: aside
+  }
+  
