@@ -1,0 +1,17 @@
+@import url('../../../node_modules/font-awesome/css/font-awesome.min.css');
+
+h1 {
+  color: red;
+}
+
+#container { 
+  display: flex;
+  flex-direction: row;
+  border: 1px solid blue;
+}
+
+#container #item { 
+  width: 100px;
+  text-align: center;
+  border: 1px solid red;
+}
