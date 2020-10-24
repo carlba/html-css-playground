@@ -1,53 +1,50 @@
-import * as express from 'express'
+import * as express from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as MarkdownIt from 'markdown-it'
-
-
+import * as MarkdownIt from 'markdown-it';
+import * as expressHandlebars from 'express-handlebars';
 
 const app = express();
-const port = 3000;
+const port = 3030;
 const md = new MarkdownIt();
-const applicationPath = path.join(__dirname, 'static');
+const applicationPath = __dirname;
+const staticFolder = path.join(applicationPath, 'static');
+app.set('views', path.join(applicationPath, 'views'));
+app.use('/static', express.static(staticFolder));
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.use('/static', express.static(applicationPath))
+app.engine('handlebars', expressHandlebars());
+app.set('view engine', 'handlebars');
+
+function readMarkdownFile(filepath: string): string {
+  return md.render(fs.readFileSync(filepath).toString());
+}
 
 app.use((req, res) => {
-  res.setHeader('content-type', 'text/html')
-  fs.readdir(applicationPath, (err, files) => {
-  const html = `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>My static files</title>
-    <link rel="stylesheet" href="styles/index.processed.css">
-  </head>
-  <body> 
-    <h1>Index</h1>
-    <script src="scripts/index.js"></script>
-  `;
-    
-    res.write(html)
-    
-    res.write('<ul>')
-    for (const file of files ) {
-      res.write(`<li><a href='static/${file}'>${file}</a></li>`)
-      const filepath = path.join(applicationPath, file);
-      const readmeFilepath = path.join(filepath, 'README.md');
-      if (fs.lstatSync(filepath).isDirectory() && fs.existsSync(readmeFilepath) ) {
-        res.write(md.render(fs.readFileSync(path.join(applicationPath, file, 'README.md')).toString()))
-      }     
-    }
-    res.write('</ul>')
-    res.write(`
-    </body>
-    </html>
-    `)
-    res.status(200).end();
-  })
-})
+  res.setHeader('content-type', 'text/html');
+  fs.readdir(staticFolder, (err, files) => {
+    const readmes = files
+      .map(file => {
+        const filepath = path.join(staticFolder, file);
+        const readmeFilepath = path.join(filepath, 'README.md');
+        if (
+          fs.lstatSync(filepath).isDirectory() &&
+          fs.existsSync(readmeFilepath)
+        ) {
+          return {
+            content: readMarkdownFile(readmeFilepath),
+            src: `static/${file}`,
+            title: file,
+          };
+        } else {
+          return null;
+        }
+      })
+      .filter(readme => readme);
+    res.render('home', {readmes, layout: false});
+  });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${3000}`)
-})
+  console.log(`Example app listening at http://localhost:${port}`);
+});
