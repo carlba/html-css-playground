@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Overlay</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body>
+    <header>
+      <h1></h1>
+    </header>
+    <main>
+      <div class="container fade-out">
+        <img src="images/moja-nice-day.jpg" alt="" />
+        <span>text</span>
+      </div>
+      <div class="container left">
+        <img src="images/on-the-sea.jpg" alt="" />
+        <div class="overlay">
+          <span>textdd</span>
+        </div>
+      </div>
+    </main>
+    <script>
+      const head = document.querySelector('head > title').innerHTML;
+      document.querySelector('header > h1').innerHTML = head;
+    </script>
+    <script type="text/javascript" src="http://livejs.com/live.js"></script>
+  </body>
+</html>

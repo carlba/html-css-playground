@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Setting a base font size of 10px give us easier rem calculations
+     Info: 1rem === 10px, 1.5rem === 15px, 2rem === 20px and so forth
+   */
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+}
+
+main {
+  display: flex;
+  gap: 10px;
+}
+
+h1 {
+  margin: 0.75em;
+}
+
+.container {
+  position: relative;
+  width: 25%;
+  font-size: 5vw;
+}
+
+.container img {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.container.fade-out:hover img {
+  opacity: 0.3;
+}
+
+.container.fade-out span {
+  position: absolute;
+  transition: 0.5s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.container.fade-out:hover span {
+  opacity: 1;
+}
+
+.container.fade-out {
+  position: relative;
+  width: 25%;
+}
+
+.container.fade-out img {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.container.fade-out:hover img {
+  opacity: 0.3;
+}
+
+.container.fade-out span {
+  position: absolute;
+  transition: 0.5s ease;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.container.fade-out:hover span {
+  opacity: 1;
+}
+
+.container.left {
+  overflow: hidden;
+  color: whitesmoke;
+}
+
+.container.left > img {
+  transition: all 1s ease-in-out;
+}
+
+.container.left > .overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  top: 0;
+  left: 150%;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.container.left > .overlay > span {
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.container.left:hover > .overlay {
+  left: 0;
+}
+
+.container.left:hover > img {
+  filter: blur(2px);
+}
