@@ -1,19 +1,12 @@
 # EditorConfig is awesome: https://EditorConfig.org
 
-# top-most EditorConfig file
-root = true
-
 # Unix-style newlines with a newline ending every file
 [*]
 end_of_line = lf
 insert_final_newline = true
-
-# Matches multiple files with brace expansion notation
-# Set default charset
-[*.{js,py}]
 charset = utf-8
 
-# 4 space indentation
+# Python
 [*.py]
 indent_style = space
 indent_size = 4
@@ -22,17 +15,12 @@ indent_size = 4
 [Makefile]
 indent_style = tab
 
-# Indentation override for all JS under lib directory
-[lib/**.js]
-indent_style = space
-indent_size = 4
-
 # Matches the exact files either package.json or .travis.yml
 [{package.json,.travis.yml}]
 indent_style = space
 indent_size = 2
 
-# Matches the exact files either package.json or .travis.yml
+# Postman
 [*postman*.json]
 indent_style = space
 indent_size = 4
@@ -42,8 +30,8 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
-# Matches all HTML pages
+# Web Development related formats
 # Based on https://google.github.io/styleguide/htmlcssguide.html
-[*.{htm,html,ejs,ts,css}]
+[*.{htm,html,ejs,ts,js}]
 indent_style = space
 indent_size = 2

@@ -6,14 +6,22 @@
   "configurations": [
     {
       "type": "browser-preview",
-      "name": "Browser Preview: Attach",
-      "request": "attach"
-    },
-    {
-      "type": "browser-preview",
       "request": "launch",
       "name": "Browser Preview: Launch",
       "url": "http://localhost:3000"
+    },
+    {
+      "outputCapture": "std",
+      "type": "pwa-node",
+      "cwd": "${workspaceFolder}",
+      "name": "run:static",
+      "restart": true,
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node-dev",
+      "skipFiles": ["<node_internals>/**"],
+
+      "runtimeArgs": ["--transpile-only", "--respawn", "--inspect", "--"],
+      "args": ["${workspaceFolder}/src/static.ts"]
     }
   ]
 }

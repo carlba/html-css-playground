@@ -3,18 +3,20 @@
 html {
   font-family: 'Rubik', sans-serif;
 }
-.readmes {
+
+.projects {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
-.readmes > * {
+.projects > * {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 10px;
   min-width: 200px;
   max-width: 300px;
 }
 
-.readmes > .readme-content * {
+.projects > .project-content * {
   font-size: 0.9em;
 }

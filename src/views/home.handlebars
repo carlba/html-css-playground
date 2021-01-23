@@ -9,14 +9,15 @@
 
 <body>
     <h1>Index</h1>
-    <div class="readmes">
-        {{#each readmes}}
+    <div class="projects">
+        {{#each projects}}
 
-        <div class='readme-content'>
+        <div class='project-content'>
             <a href="{{this.src}}">
                 <h1>{{this.title}}</h1>
             </a>
-            {{{this.content}}} </div>
+            {{{this.content}}}
+        </div>
         {{/each}}
     </div>
     <script src="scripts/index.js"></script>
