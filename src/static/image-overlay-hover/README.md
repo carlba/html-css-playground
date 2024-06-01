@@ -1,4 +1,4 @@
-# HTML and CSS Template
+# Image Overlay Hover
 
 Template for new Websites in this repo
 

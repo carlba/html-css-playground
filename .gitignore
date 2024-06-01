@@ -10,3 +10,4 @@ node_modules/
 # Application Specific
 build/
 
+firebase-debug.log

@@ -1,10 +1,10 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as MarkdownIt from 'markdown-it';
-import * as expressHandlebars from 'express-handlebars';
+import * as markdownit from 'markdown-it';
+import { engine } from 'express-handlebars';
 
-const md = new MarkdownIt();
+const md = markdownit();
 const port = 3030;
 const applicationPath = __dirname;
 const staticFolder = path.join(applicationPath, 'static');
@@ -23,7 +23,7 @@ function createApp(port: number, staticFolder: string) {
   app.use('/static', express.static(staticFolder));
   app.use(express.static(path.join(__dirname, '/public')));
 
-  app.engine('handlebars', expressHandlebars());
+  app.engine('handlebars', engine());
   app.set('view engine', 'handlebars');
 
   app.use((req, res) => {
